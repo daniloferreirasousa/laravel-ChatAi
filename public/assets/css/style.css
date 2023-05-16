@@ -1,0 +1,10 @@
+article form{
+    flex: 1;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+article form input[type="text"] {
+    flex: 1;
+}
