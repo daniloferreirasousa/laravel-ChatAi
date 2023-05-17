@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CopyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IngredienteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::post('/ingredientes', [HomeController::class, 'ingredientesAcao'])->name('ingredientesAcao');
+Route::get('/ingredientes', [IngredienteController::class, 'index']);
+Route::post('/ingredientes', [IngredienteController::class, 'ingredientesAcao'])->name('ingredientesAcao');
+
+Route::get('/copy', [CopyController::class, 'index']);
+Route::post('/copy', [CopyController::class, 'copyAcao'])->name('copyAcao');

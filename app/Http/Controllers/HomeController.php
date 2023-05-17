@@ -8,39 +8,43 @@ use GuzzleHttp\Client;
 
 class HomeController extends Controller
 {
-    public function index(Request $r):View
+    public function index():View
     {
-        return view('welcome');
+        return view('home');
     }
 
-    public function ingredientesAcao(Request $r):View
+
+    public function copyAcao(Request $r):View
     {
+        dd($r->all());
+
         $client = new Client([
             'base_uri' => 'https://api.openai.com/v1/',
             'headers' => [
-                'Content-Type'  => 'application/json',
-                'Authorization' => 'Bearer ' . env('OPENAI_API_KEY')
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer '. env('OPENAI_API_KEY')
             ]
         ]);
 
         $response = $client->post('completions', [
             'json' => [
                 'model' => 'text-davinci-003',
-                'prompt' => "Gere uma receita incrivel e o modo de preparo com os seguintes ingredientes: ".$r->input('ingredientes'),
-                'max_tokens' => 50,
+                'prompt' => 'Gere uma copy que convença qualquer um a comprar o produto, baseando-se no seguinte nome de produto: '.$r->input('copy'),
+                'max_tokens' => 500,
                 'temperature' => 0.5,
                 'n' => 1,
                 'stop' => ['\n']
             ]
         ]);
+
         if($response->getStatusCode() == 200) {
             $data = json_decode($response->getBody(), true);
-            $viewData['receita'] = $data['choices'][0]['text'];
+            $viewData['copyEnv'] = $r->input('copy');
+            $viewData['copy'] = $data['choices'][0]['text'];
 
-            return view('welcome', $viewData);
+            return view('copy', $viewData);
         } else {
-            return ['error' => 'Deu algum erro!'];
+            return ['error' => 'Houve um erro ao gerar a copy!'];
         }
-        
     }
 }

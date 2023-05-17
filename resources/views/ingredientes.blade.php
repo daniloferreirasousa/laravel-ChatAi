@@ -11,7 +11,10 @@
 </head>
 <body>
     <header>
-        <h1>Muskai 🤖</h1>
+        <h1>Gerador de Receitas 🤖</h1>
+        <nav>
+            <a href="/">Voltar</a>
+        </nav>
     </header>
 
     <main>
@@ -21,13 +24,13 @@
             <form method="post" action="{{ route('ingredientesAcao') }}">
                 @csrf
                 <label for="ing">Ingredientes</label>
-                <input type="text" name="ingredientes" id="ing">
+                <input type="text" name="ingredientes" id="ing" value="{{ $ingredientes ?? null }}">
                 <input type="submit" value="Criar">
             </form>
         </article>
         
 
-        @if($receita)
+        @if(!empty($receita))
             {!! preg_replace("/\r\n|\n/", "<br>", $receita) !!}
         @endif
     </main>
