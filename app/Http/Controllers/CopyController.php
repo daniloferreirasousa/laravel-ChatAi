@@ -40,7 +40,6 @@ class CopyController extends Controller
         ]);
 
         $viewData['image'] = $image['data'][0]['url'];
-
         $viewData['copyGerada'] = $result['choices'][0]['message']['content'];
         
 
