@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CopyController;
+use App\Http\Controllers\GenericController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngredienteController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,6 @@ Route::post('/ingredientes', [IngredienteController::class, 'ingredientesAcao'])
 
 Route::get('/copy', [CopyController::class, 'index']);
 Route::post('/copy', [CopyController::class, 'copyAcao'])->name('copyAcao');
+
+Route::get('/generic', [GenericController::class, 'index']);
+Route::post('/generic', [GenericController::class, 'genericAcao'])->name('genericAcao');

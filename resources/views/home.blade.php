@@ -14,6 +14,7 @@
         <h1>DFS IA 🤖</h1>
         <nav>
             <a href="/">Home</a>
+            <a href="/generic">Geral</a>
             <a href="/ingredientes">Ingredientes</a>
             <a href="/copy">Faça minha venda</a>
         </nav>

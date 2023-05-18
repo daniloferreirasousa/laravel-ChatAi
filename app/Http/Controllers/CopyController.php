@@ -41,9 +41,6 @@ class CopyController extends Controller
             'response_format' => 'url'
         ]);
 
-<<<<<<< HEAD
-        $viewData['image'] = $image['data'][0]['url'];
-=======
         if($image) {
             $viewData['image'] = $image['data'][0]['url'];
         } else {
@@ -56,7 +53,6 @@ class CopyController extends Controller
         $viewData['publico_alvo'] = $r->publico_alvo;
         $viewData['estilo_copy'] = $r->estilo_copy;
         
->>>>>>> refs/remotes/origin/main
         $viewData['copyGerada'] = $result['choices'][0]['message']['content'];
         
 
